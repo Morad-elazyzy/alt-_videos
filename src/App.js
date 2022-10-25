@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/index";
 import { Feed, VideoDetail, ChannelDetail, SearchFeed } from "./pages/index";
+
 function App() {
   return (
     <BrowserRouter>
