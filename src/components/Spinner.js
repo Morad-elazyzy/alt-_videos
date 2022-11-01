@@ -1,6 +1,3 @@
-import { Box, Skeleton } from "@mui/material";
-import { flexbox } from "@mui/system";
-
 const Spinner = ({ spinnerStyle }) => {
   const defaultStyle = {
     width: "100%",
@@ -10,7 +7,7 @@ const Spinner = ({ spinnerStyle }) => {
   };
   return (
     <div style={{ ...defaultStyle, ...spinnerStyle }}>
-      <div class="lds-dual-ring"></div>
+      <div className="lds-dual-ring"></div>
     </div>
   );
 };

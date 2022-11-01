@@ -11,7 +11,6 @@ const VideoDetail = () => {
   const [status, setStatus] = useState("idle");
   const [video, setVideo] = useState(null);
   const [similarVideos, setSimilarVideos] = useState(null);
-  useEffect(() => console.log(status), [status]);
 
   ///fetch video base on page:videoId
   const getVideoData = () => {
@@ -52,7 +51,7 @@ const VideoDetail = () => {
               controls
             />
           </Box>
-          <Typography color="#fff" variant="h5" fontWeight="bold" py={2}>
+          <Typography color="#fff" component="h5" fontWeight="bold" py={2}>
             {video.snippet.title}
           </Typography>
           <Typography variant={{ sm: "subtitle1", md: "h6" }} color="#fff">
@@ -83,7 +82,6 @@ const VideoDetail = () => {
       </Error>
     );
   }
-
   return <Container>{htmlContent}</Container>;
 };
 

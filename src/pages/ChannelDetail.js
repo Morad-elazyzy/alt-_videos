@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container } from "@mui/material";
 
-import { VideoCard, Spinner, Error } from "../components";
+import { Spinner, Error } from "../components";
 import { fetchData } from "../utils/fetchData";
 
 const ChannelDetail = () => {
@@ -11,7 +11,6 @@ const ChannelDetail = () => {
   const [status, setStatus] = useState("ideal");
 
   const { id } = useParams();
-  useEffect(() => console.log(videos[1]), [videos]);
   const getChannel = () => {
     setStatus("loading");
     fetchData(`channels?part=snippet&id=${id}`)
@@ -49,7 +48,7 @@ const ChannelDetail = () => {
       />
     );
   } else if (status === "idle" && videos && videos.length > 0) {
-    FeedHtml = videos.map((i) => console.log(i));
+    // FeedHtml = videos.map((i) => console.log(i));
   }
   return <Container>{FeedHtml} </Container>;
 };

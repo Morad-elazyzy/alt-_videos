@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Grid, Box, Container, Typography, Stack } from "@mui/material";
 import { SideBar, VideoCard, Spinner, Error } from "../components/index";
 import { fetchData } from "../utils/fetchData";

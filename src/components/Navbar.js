@@ -16,7 +16,7 @@ const Navbar = () => {
           display="flex"
           direction="row"
           justifyContent="space-between"
-          alignIntems="center"
+          alignItems="center"
           height={40}
         >
           <Link to="/" style={{ display: "flex", alignItems: "center" }}>
