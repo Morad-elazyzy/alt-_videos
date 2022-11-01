@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Morad-elazyz/static/css/main.a9ae1205.css",
+    "main.js": "/Morad-elazyz/static/js/main.c8d03856.js",
+    "index.html": "/Morad-elazyz/index.html",
+    "main.a9ae1205.css.map": "/Morad-elazyz/static/css/main.a9ae1205.css.map",
+    "main.c8d03856.js.map": "/Morad-elazyz/static/js/main.c8d03856.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9ae1205.css",
+    "static/js/main.c8d03856.js"
+  ]
+}
