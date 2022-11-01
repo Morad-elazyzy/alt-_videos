@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Morad-elazyz/static/css/main.a9ae1205.css",
-    "main.js": "/Morad-elazyz/static/js/main.c8d03856.js",
-    "index.html": "/Morad-elazyz/index.html",
-    "main.a9ae1205.css.map": "/Morad-elazyz/static/css/main.a9ae1205.css.map",
-    "main.c8d03856.js.map": "/Morad-elazyz/static/js/main.c8d03856.js.map"
+    "main.css": "/alt_videos/static/css/main.a9ae1205.css",
+    "main.js": "/alt_videos/static/js/main.c8d03856.js",
+    "index.html": "/alt_videos/index.html",
+    "main.a9ae1205.css.map": "/alt_videos/static/css/main.a9ae1205.css.map",
+    "main.c8d03856.js.map": "/alt_videos/static/js/main.c8d03856.js.map"
   },
   "entrypoints": [
     "static/css/main.a9ae1205.css",
