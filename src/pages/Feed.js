@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Grid, Box, Container, Typography, Stack } from "@mui/material";
-import { SideBar, VideoCard } from "../components/index";
+import { SideBar, VideoCard, Spinner, Error } from "../components/index";
 import { fetchData } from "../utils/fetchData";
 
 const Feed = () => {
   const [categorie, setCategorie] = useState("new");
   const [feedVideos, setFeedVideos] = useState([]);
-  const [status, setStatus] = useState("idle");
+  const [status, setStatus] = useState("ideal");
 
-  useEffect(() => {
+  const getFeedData = () => {
     setStatus("loading");
     fetchData(`search?part=snippet&q=${categorie}`)
       .then((res) => {
@@ -20,13 +20,22 @@ const Feed = () => {
         setStatus("error");
         console.log(err);
       });
+  };
+
+  useEffect(() => {
+    getFeedData();
   }, [categorie]);
 
   let FeedHtml;
   if (status === "loading") {
-    FeedHtml = <div style={{ color: "#fff" }}>Loading</div>;
+    FeedHtml = <Spinner spinnerStyle={{ marginTop: "100px" }} />;
   } else if (status === "error") {
-    FeedHtml = <div style={{ color: "#fff" }}>Error</div>;
+    FeedHtml = (
+      <Error
+        tryAgainClick={() => getFeedData()}
+        ErrorStyle={{ marginTop: "100px" }}
+      />
+    );
   } else if (status === "idle" && feedVideos.length > 0) {
     FeedHtml = feedVideos.map((i) => (
       <VideoCard videoDetail={i} key={i.id.videoId} />
@@ -39,10 +48,20 @@ const Feed = () => {
           <SideBar setCategorie={(cat) => setCategorie(cat)} />{" "}
         </Grid>
         <Grid item md={10} xs={12}>
-          <Stack component="h2" direction="row" color="#fff">
+          <Stack
+            component="h2"
+            direction="row"
+            fontSize={40}
+            sx={{ textTransform: "capitalize" }}
+            color="#fff"
+          >
             {categorie + " videos"}
           </Stack>
-          <Stack direction="row" sx={{ flexWrap: "wrap", gap: "1rem" }}>
+          <Stack
+            direction="row"
+            justifyContent="center"
+            sx={{ flexWrap: "wrap", gap: "1rem" }}
+          >
             {FeedHtml}
           </Stack>
         </Grid>

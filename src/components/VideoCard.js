@@ -17,7 +17,7 @@ export default function VideoCard({
       <CardMedia component="img" height="194" image={thumbnails.medium.url} />
       <CardContent>
         <Typography component="h3" color="#fff">
-          {title}
+          {title.slice(0, 60)}
         </Typography>
         <Typography
           mt={1}

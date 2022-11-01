@@ -9,6 +9,7 @@ const SideBar = ({ setCategorie }) => {
         position: "fixed",
         color: " red",
         overflow: "auto",
+        bgcolor: "black",
       }}
     >
       {categories.map((i) => (

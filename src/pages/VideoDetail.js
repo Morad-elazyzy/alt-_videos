@@ -1,11 +1,11 @@
-// import {} from "react";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Box, Stack, Grid, Container, Typography } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { fetchData } from "../utils/fetchData";
-import { VideoCard } from "../components/index";
+import { VideoCard, Spinner, Error } from "../components/index";
+
 const VideoDetail = () => {
   const { id } = useParams();
   const [status, setStatus] = useState("idle");
@@ -14,7 +14,7 @@ const VideoDetail = () => {
   useEffect(() => console.log(status), [status]);
 
   ///fetch video base on page:videoId
-  useEffect(() => {
+  const getVideoData = () => {
     setStatus("loading");
     fetchData(`videos?part=snippet,statistics&id=${id} `)
       .then((res) => {
@@ -34,6 +34,9 @@ const VideoDetail = () => {
         console.log(err);
         setStatus("error");
       });
+  };
+  useEffect(() => {
+    getVideoData();
   }, [id]);
 
   /// render html base on status == idel | loading | error
@@ -52,14 +55,12 @@ const VideoDetail = () => {
           <Typography color="#fff" variant="h5" fontWeight="bold" py={2}>
             {video.snippet.title}
           </Typography>
-          <Link to={`/channel/${video.snippet.channelId}`}>
-            <Typography variant={{ sm: "subtitle1", md: "h6" }} color="#fff">
-              {video.snippet.channelTitle}
-              <CheckCircleIcon
-                sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
-              />
-            </Typography>
-          </Link>
+          <Typography variant={{ sm: "subtitle1", md: "h6" }} color="#fff">
+            {video.snippet.channelTitle}
+            <CheckCircleIcon
+              sx={{ fontSize: "12px", color: "gray", ml: "5px" }}
+            />
+          </Typography>
         </Grid>
         <Grid item xs={12} md={3}>
           <Stack sx={{ flexWrap: "wrap", gap: "1rem" }}>
@@ -71,9 +72,16 @@ const VideoDetail = () => {
       </Grid>
     );
   } else if (status === "loading") {
-    htmlContent = <div style={{ color: "#fff" }}>loading</div>;
+    htmlContent = <Spinner spinnerStyle={{ marginTop: "100px" }} />;
   } else if (status === "error") {
-    htmlContent = <div style={{ color: "#fff" }}>err</div>;
+    htmlContent = (
+      <Error
+        tryAgainClick={() => getVideoData()}
+        ErrorStyle={{ marginTop: "100px" }}
+      >
+        err
+      </Error>
+    );
   }
 
   return <Container>{htmlContent}</Container>;

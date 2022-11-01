@@ -3,9 +3,22 @@ import { Link } from "react-router-dom";
 import { SearchBar } from "./index";
 const Navbar = () => {
   return (
-    <Box py={2} bgcolor="black" position="sticky" component="nav">
+    <Box
+      py={2}
+      position="sticky"
+      spacing={1}
+      top={0}
+      component="nav"
+      sx={{ backgroundColor: "black" }}
+    >
       <Container>
-        <Stack direction="row" justifyContent="space-between">
+        <Stack
+          display="flex"
+          direction="row"
+          justifyContent="space-between"
+          alignIntems="center"
+          height={40}
+        >
           <Link to="/" style={{ display: "flex", alignItems: "center" }}>
             <img
               src="https://i.ibb.co/s9Qys2j/logo.png"
@@ -14,7 +27,7 @@ const Navbar = () => {
             />
           </Link>
           <SearchBar />
-          <Button color="error" variant="contained">
+          <Button color="error" size="small" variant="contained">
             Login
           </Button>
         </Stack>
